@@ -8,14 +8,21 @@ namespace MonoOnMojaveSimpleXam
 	{
 		public override void DidFinishLaunching(NSNotification notification)
 		{
-			NSAlert alert = new NSAlert() {
-				MessageText = "Message",
-				InformativeText = "Informative"
-			};
+			while (true) {
+				NSAlert alert = new NSAlert() {
+					MessageText = "Information",
+					InformativeText = "Click continue to show another alert, cancel to stop."
+				};
 
-			alert.AddButton("OK");
+				alert.AddButton("Continue");
+				alert.AddButton("Cancel");
 
-			alert.RunModal();
+				var ret = alert.RunModal();
+
+				if (ret == 1001) {
+					break;
+				}
+			}
 		}
 	}
 }
